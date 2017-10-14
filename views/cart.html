@@ -1,0 +1,478 @@
+<style>
+    header {
+        width: 100%;
+        height: 55px;
+        padding: 0 10px;
+        position: fixed;
+        text-align: center;
+        line-height: 55px;
+        background-color: rgb(249, 250, 253);
+        border-bottom: solid 1px #e0e0e0;
+    }
+
+    h3 {
+        font-size: 18px;
+        font-weight: bolder;
+        color: #000;
+    }
+
+    #cartContainer {
+        width: 100%;
+        height: 94.5%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: absolute;
+        top: 55px;
+    }
+
+    .empty {
+        width: 100%;
+        height: 100%;
+        background-color: #efefef;
+        position: relative;
+    }
+
+    .empty img {
+        width: 25%;
+        position: absolute;
+        top: 10%;
+        left: 37.5%;
+    }
+
+    .empty p {
+        color: #999;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+    }
+
+    .empty a {
+        display: inline-block;
+        color: #999;
+        width: 15%;
+        height: 3%;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        position: absolute;
+        top: 35%;
+        left: 42.5%;
+    }
+
+    .shopping {
+        width: 100%;
+        height: 100%;
+        background-color: #efefef;
+        position: relative;
+    }
+
+    .top {
+        background-color: #fff;
+        color: #e64f1a;
+        font-size: 18px;
+        padding: 17px 30px 17px 18px;
+        border-bottom: solid 1px #e0e0e0;
+        margin-bottom: 0;
+    }
+    .receive {
+        width: 100%;
+        height: 120px;
+        font-size: 16px;
+        font-weight: 400;
+        background-image: url("./img/getBg.png"), url("./img/getBg.png");
+        background-position: left top, left bottom;
+        background-repeat: repeat-x;
+        -webkit-background-size: auto 3px;
+        background-size: auto 3px;
+        background-color: #fff;
+    }
+
+    .list {
+        padding-left: 18px;
+        float: left;
+        list-style: none;
+    }
+
+    .list li {
+        height: 40px;
+        line-height: 40px;
+    }
+    .list:last-of-type{
+        margin-left: 10px;
+    }
+    .change{
+        height: 100%;
+        float: right;
+        line-height: 120px;
+    }
+    .change a{
+        color: #999;
+    }
+    .change img{
+        height: 14px;
+        position: relative;
+        top: -2px;
+        left: 5px;
+    }
+    .msg {
+        margin-top: 10px;
+        background-color: #fff;
+        padding: 10px 10px 0 18px;
+        color: #999;
+        border-bottom: solid 1px #e0e0e0;
+    }
+
+    .san span {
+        display: inline-block;
+        width: 5px;
+        height: 12px;
+        background: #ffd600;
+        border-radius: 2em;
+        margin-right: 5px;
+    }
+
+    .receipts {
+        background-color: #fff;
+    }
+
+    .receipts p {
+        padding: 18px;
+        width: 100%;
+        border-bottom: solid 1px #e0e0e0;
+        margin: 0;
+        position: relative;
+    }
+    .receipts p select{
+        position: absolute;
+        top: 0;
+        right: 5%;
+        bottom: 0;
+        width: 15%;
+        border: 0;
+        opacity: 0;
+    }
+    .receipts p span:first-of-type {
+        color: #e64f1a;
+        margin-left: 10px;
+    }
+
+    .receipts p span:last-of-type {
+        float: right;
+    }
+
+    .receipts input {
+        outline: none;
+        border: 1px solid #efefef;
+        border-radius: 5px;
+        margin-left: 10px;
+        width: 85%;
+        padding: 2% 2%;
+    }
+
+    .shopList {
+        width: 100%;
+        height: 100px;
+        border-bottom: 1px solid #efefef;
+        background-color: #fff;
+        position: relative;
+    }
+
+    .shopList .proImg {
+        width: 19%;
+        margin-left: 20px;
+    }
+
+    .shopList .np {
+        position: absolute;
+        top: 18PX;
+        left: 45%;
+    }
+
+    .plus, .less, .count {
+        width: 30px;
+        height: 30px;
+        color: #ff4300;
+        font-size: 35px;
+        font-weight: bolder;
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        text-align: center;
+        border: 1px solid #ff4300;
+        border-radius: 2em;
+        line-height: 30px;
+    }
+
+    .count {
+        position: absolute;
+        bottom: 5%;
+        right: 15%;
+        font-size: 16px;
+        border: none;
+        color: #333;
+    }
+
+    .less {
+        right: 25%;
+    }
+
+    .checkout {
+        width: 100%;
+        height: 70px;
+        border-bottom: 1px solid #efefef;
+        background-color: #fff;
+        position: relative;
+    }
+
+    .checkout > p {
+        width: 70%;
+        line-height: 70px;
+        float: left;
+    }
+
+    .all {
+        margin-left: 10px;
+    }
+
+    .total {
+        margin-left: 20%;
+    }
+
+    .total_price {
+        color: #f00;
+    }
+
+    .checkout > span {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffd600;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .select {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+        border: solid 1px #efefef;
+        border-radius: 2em;
+        position: relative;
+    }
+
+    .select img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+    }
+</style>
+<!-- header -->
+<header>
+    <h3>购物车</h3>
+</header>
+<div id="cartContainer">
+    <!-- 空购物车 -->
+    <div class="empty" ng-show="cartArr.length===0">
+        <img src="http://m.beequick.cn/static/bee/img/m/icon/empty_addrlist-7b6725e9.png" alt="">
+        <p>亲,购物车空空的耶~</p>
+        <a href="#/home">去逛逛</a>
+    </div>
+    <!-- 已选商品 -->
+    <div class="shopping" ng-show="cartArr.length>0">
+        <a href="#/map" ng-show="false"><p class="top">鲜蜂侠需要您精确的坐标</p></a>
+        <div class="receive">
+            <ul class="list">
+                <li>收&nbsp;&nbsp;货&nbsp;&nbsp;人</li>
+                <li>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</li>
+                <li>收货地址</li>
+            </ul>
+            <ul class="list">
+                <li>罗志勇 先生</li>
+                <li>18279161074</li>
+                <li>深圳市育知同创 1704</li>
+            </ul>
+            <p class="change"><a href="#/map">修改 <span><img src="./img/turnR.png" alt=""></span></a></p>
+        </div>
+
+        <div class="msg">
+            <p class="san"><span></span>闪送超市</p>
+            <p class="tip">¥0起送,22:00前满¥30免运费</p>
+        </div>
+        <!-- 收货信息 -->
+        <div class="receipts">
+            <p>收货时间
+                <span>{{value}}</span>
+                <span>可预订 <i class="glyphicon glyphicon-menu-right"></i></span>
+                <!-- 下拉菜单选择收货时间 -->
+                <select ng-model="value">
+                    <optgroup label="今天">
+                        <option value="30分钟送达">
+                            30分钟送达
+                        </option>
+                        <option value="14:00-15:00">
+                            14:00-15:00
+                        </option>
+                        <option value="15:00-16:00">
+                            15:00-16:00
+                        </option>
+                        <option value="16:00-17:00">
+                            16:00-17:00
+                        </option>
+                        <option value="17:00-18:00">
+                            17:00-18:00
+                        </option>
+                        <option value="18:00-19:00">
+                            18:00-19:00
+                        </option>
+                        <option value="19:00-20:00">
+                            19:00-20:00
+                        </option>
+                        <option value="20:00-21:00">
+                            20:00-21:00
+                        </option>
+                        <option value="21:00-22:00">
+                            21:00-22:00
+                        </option>
+                        <option value="22:00-23:00">
+                            22:00-23:00
+                        </option>
+                        <option value="23:00-24:00">
+                            23:00-24:00
+                        </option>
+                    </optgroup>
+                    <optgroup label="明天">
+                        <option value="明天 09:00-10:00">
+                            09:00-10:00
+                        </option>
+                        <option value="明天 10:00-11:00">
+                            10:00-11:00
+                        </option>
+                        <option value="明天 11:00-12:00">
+                            11:00-12:00
+                        </option>
+                        <option value="明天 12:00-13:00">
+                            12:00-13:00
+                        </option>
+                        <option value="明天 13:00-14:00">
+                            13:00-14:00
+                        </option>
+                        <option value="明天 14:00-15:00">
+                            14:00-15:00
+                        </option>
+                        <option value="明天 15:00-16:00">
+                            15:00-16:00
+                        </option>
+                        <option value="明天 16:00-17:00">
+                            16:00-17:00
+                        </option>
+                        <option value="明天 17:00-18:00">
+                            17:00-18:00
+                        </option>
+                        <option value="明天 18:00-19:00">
+                            18:00-19:00
+                        </option>
+                        <option value="明天 19:00-20:00">
+                            19:00-20:00
+                        </option>
+                        <option value="明天 20:00-21:00">
+                            20:00-21:00
+                        </option>
+                        <option value="明天 21:00-22:00">
+                            21:00-22:00
+                        </option>
+                        <option value="明天 22:00-23:00">
+                            22:00-23:00
+                        </option>
+                        <option value="明天 23:00-24:00">
+                            23:00-24:00
+                        </option>
+                    </optgroup>
+                    <optgroup label="后天">
+                        <option value="后天 09:00-10:00">
+                            09:00-10:00
+                        </option>
+                        <option value="后天 10:00-11:00">
+                            10:00-11:00
+                        </option>
+                        <option value="后天 11:00-12:00">
+                            11:00-12:00
+                        </option>
+                        <option value="后天 12:00-13:00">
+                            12:00-13:00
+                        </option>
+                        <option value="后天 13:00-14:00">
+                            13:00-14:00
+                        </option>
+                        <option value="后天 14:00-15:00">
+                            14:00-15:00
+                        </option>
+                        <option value="后天 15:00-16:00">
+                            15:00-16:00
+                        </option>
+                        <option value="后天 16:00-17:00">
+                            16:00-17:00
+                        </option>
+                        <option value="后天 17:00-18:00">
+                            17:00-18:00
+                        </option>
+                        <option value="后天 18:00-19:00">
+                            18:00-19:00
+                        </option>
+                        <option value="后天 19:00-20:00">
+                            19:00-20:00
+                        </option>
+                        <option value="后天 20:00-21:00">
+                            20:00-21:00
+                        </option>
+                        <option value="后天 21:00-22:00">
+                            21:00-22:00
+                        </option>
+                        <option value="后天 22:00-23:00">
+                            22:00-23:00
+                        </option>
+                        <option value="后天 23:00-24:00">
+                            23:00-24:00
+                        </option>
+                    </optgroup>
+                </select>
+            </p>
+            <p>收货备注 <input type="text" placeholder="可输入100字以内特殊要求内容"></p>
+        </div>
+        <!-- 已选商品信息 -->
+        <div class="shopList" ng-repeat="(index,item) in cartArr">
+            <p>
+                <span class="select" ng-click="select(item)">
+                    <img ng-show="item.checkedBol" src="./img/select.png" alt="">
+                </span>
+                <img src="{{item.img}}" alt="" class="proImg">
+            </p>
+            <div class="np">
+                <p>{{item.name}}</p>
+                <br>
+                <p>¥{{item.price}}</p>
+            </div>
+            <!-- 数量 +/- -->
+            <span class="less" ng-click="cancelS(item)"> - </span>
+            <span class="count"> {{item.pre_state}} </span>
+            <span class="plus" ng-click="shop(item)"> + </span>
+        </div>
+        <!-- 确认 -->
+        <div class="checkout">
+            <p>
+                <span class="select" ng-click="selectAll()">
+                    <img ng-show="selectAllBol()" src="./img/select.png" alt="">
+                </span>
+                <span class="all">全选</span>
+                <span class="total">共:</span>
+                <span class="total_price">¥{{totalPrice.toFixed(2)}}</span>
+            </p>
+            <span>选好了</span>
+        </div>
+    </div>
+</div>

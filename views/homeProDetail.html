@@ -1,0 +1,131 @@
+<style>
+    header {
+        width: 100%;
+        font-size: 16px;
+        height: 40px;
+        line-height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px #ccc;
+        padding: 0 10px;
+    }
+
+    i {
+        color: #999;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .proMsg {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .proMsg p {
+        margin-top: 20px;
+    }
+
+    .proMsg p span:first-of-type {
+        font-size: 18px;
+        font-weight: bolder;
+        color: #f40;
+        margin-right: 10px;
+    }
+
+    .operates {
+        border-top: solid 1px #ccc;
+        height: 60px;
+        width: 100%;
+        position: absolute;
+        bottom: -60px;
+        font-size: 13px;
+    }
+
+    .get {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 12px;
+        left: 5%;
+    }
+
+    .get i {
+        font-size: 26px;
+    }
+
+    .add {
+        position: absolute;
+        top: 25px;
+        left: 20%;
+    }
+
+    .plus, .less, .count {
+        width: 30px;
+        height: 30px;
+        color: #ff4300;
+        font-size: 35px;
+        font-weight: bolder;
+        position: absolute;
+        top: 15px;
+        right: 25%;
+        text-align: center;
+        border: 1px solid #ff4300;
+        border-radius: 2em;
+        line-height: 30px;
+    }
+
+    .count {
+        right: 32.5%;
+        font-size: 16px;
+        border: none;
+        color: #333;
+    }
+
+    .less {
+        right: 40%;
+    }
+
+    .operates .img, .cart {
+        width: 16%;
+        position: absolute;
+        right: 5%;
+        top: -25px;
+        background-color: #ffd600;
+        border-radius: 50%;
+    }
+
+    .cart {
+        top: 95%;
+    }
+</style>
+<header>
+    <a href="" ng-click="back()"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    {{title}}
+    <a href=""><i class="glyphicon glyphicon-repeat"></i></a>
+</header>
+<img src="{{img}}" alt="">
+<div class="proMsg" ng-show="netW">
+    <h3>{{title}}{{netW}}</h3>
+    <p><span>¥{{price}}</span><span ng-show="price<market_price">¥{{market_price}}</span></p>
+</div>
+<div class="operates" ng-show="netW">
+    <span class="get"><i class="glyphicon glyphicon-heart-empty"></i>收藏</span>
+    <span class="add">添加商品:</span>
+    <span class="less" ng-click="cancelS()"> - </span>
+    <span class="count"> {{num}} </span>
+    <span class="plus" ng-click="shop()"> + </span>
+    <a href="#/cart" class="img">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABuCAMAAADxhdbJAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAHFUExURUxpcf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////74HNBAAAACWdFJOUwCwEOygcNBggJAEwJwFJFDw8qR+MBv+4ItLAuT9A8zfQNxUKAaOPSxmRA72+/UBjOpVM1P5a+jDZKgmtTe+F0rYZaLxDwmIXAdXbCB0cdHpjWhuuazPeK0MxdccW28+98djVnmWl0Lte11BPy+yE/xyttmYHvTORQsSxIYiMRmn83bUgrgNdSmULoHbNJIVZ5tZ3vq/61CyaTYAAAKJSURBVGje7dlnVxNBFAbgJQklMT3BJCIkKEWqghRpIh3B3pVi7733DvZe9vc6m03xgwve927m6Dnzfp6T52x25u7MHU1TUVFRUVFRUeGkzanreii5ED/jk8EZmhlnZKzwXIuez3t/wbm5jt+8LZ7CP98qx/3euqFwyPDmpc0ZR5XgZuXN0S+CeyWPiwtubymSwVGA26bDafpM59bojGwkc+0croTMLXK4lfR/s4LBjdC5HwxugM6dZnBxOredwbXRuQSDe0Ln/LhWDZQVTzPMeZGqeQPmJhDuMszNINwuVEtCn6B1KOeCuAsoVwpx5Sg3jX3Qn2FaDNw/7Jf56jStB+M2gdxLjEM33+chrQLd+32AuDDKNUp9deB2ZS3MDQBaF75xfwNwPTi3B+B241yD1Fen3aJrGzinrttkbh+Hu0PmpjhcmMzVc7gIVfvZyuHIZ8qDrAP6WypXzOImVxO5KK//8I2mdbfyuD5jx//XLY5ADbO7Uiu4cXnNHGMnXSSPuyi4I/K4zYJr9sjzgsLrPySNO5bpywSDsViyRGSFSJGIKx2v28x4WTrn7jI5F3GdJ3jcEJFbz+wVn+yuDhJK2VZ7GtRXpv3R9lQqlQgEApkaMlWczvOyTB663bVf1VXMP5ax172Vy1SfS5/swkZPtej62cgSd1ANxqXDg357LjBemFP8uuUDTpgL5fugHZw3u6SuWTVEmrKXYg6+du9o7gbKYsSB3Bo/zuce5yvG5J9HPM0N+Mjn6vPdeovv3rBdBdOIbyT7Y1UWIzpz3Akbpsq75apv485sT7jGBs7XZ/6Y23JEXcg82kVtWXiVnTuudhxe6hbp0bBT77pZrsqvioqKioqKyn+dX7jWs9PYCXZZAAAAAElFTkSuQmCC"
+             alt="">
+    </a>
+</div>
+<a href="#/cart" class="cart" ng-show="!netW">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAABuCAMAAADxhdbJAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAHFUExURUxpcf///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////74HNBAAAACWdFJOUwCwEOygcNBggJAEwJwFJFDw8qR+MBv+4ItLAuT9A8zfQNxUKAaOPSxmRA72+/UBjOpVM1P5a+jDZKgmtTe+F0rYZaLxDwmIXAdXbCB0cdHpjWhuuazPeK0MxdccW28+98djVnmWl0Lte11BPy+yE/xyttmYHvTORQsSxIYiMRmn83bUgrgNdSmULoHbNJIVZ5tZ3vq/61CyaTYAAAKJSURBVGje7dlnVxNBFAbgJQklMT3BJCIkKEWqghRpIh3B3pVi7733DvZe9vc6m03xgwve927m6Dnzfp6T52x25u7MHU1TUVFRUVFRUeGkzanreii5ED/jk8EZmhlnZKzwXIuez3t/wbm5jt+8LZ7CP98qx/3euqFwyPDmpc0ZR5XgZuXN0S+CeyWPiwtubymSwVGA26bDafpM59bojGwkc+0croTMLXK4lfR/s4LBjdC5HwxugM6dZnBxOredwbXRuQSDe0Ln/LhWDZQVTzPMeZGqeQPmJhDuMszNINwuVEtCn6B1KOeCuAsoVwpx5Sg3jX3Qn2FaDNw/7Jf56jStB+M2gdxLjEM33+chrQLd+32AuDDKNUp9deB2ZS3MDQBaF75xfwNwPTi3B+B241yD1Fen3aJrGzinrttkbh+Hu0PmpjhcmMzVc7gIVfvZyuHIZ8qDrAP6WypXzOImVxO5KK//8I2mdbfyuD5jx//XLY5ADbO7Uiu4cXnNHGMnXSSPuyi4I/K4zYJr9sjzgsLrPySNO5bpywSDsViyRGSFSJGIKx2v28x4WTrn7jI5F3GdJ3jcEJFbz+wVn+yuDhJK2VZ7GtRXpv3R9lQqlQgEApkaMlWczvOyTB663bVf1VXMP5ax172Vy1SfS5/swkZPtej62cgSd1ANxqXDg357LjBemFP8uuUDTpgL5fugHZw3u6SuWTVEmrKXYg6+du9o7gbKYsSB3Bo/zuce5yvG5J9HPM0N+Mjn6vPdeovv3rBdBdOIbyT7Y1UWIzpz3Akbpsq75apv485sT7jGBs7XZ/6Y23JEXcg82kVtWXiVnTuudhxe6hbp0bBT77pZrsqvioqKioqKyn+dX7jWs9PYCXZZAAAAAElFTkSuQmCC"
+            alt="">
+</a>

@@ -1,0 +1,360 @@
+<style>
+    header {
+        width: 100%;
+        height: 55px;
+        padding: 0 10px;
+        position: fixed;
+        text-align: center;
+        line-height: 55px;
+        background-color: #ffd600;
+    }
+
+    h3 {
+        font-size: 18px;
+        font-weight: bolder;
+        color: #000;
+    }
+
+    h3 i {
+        font-size: 18px;
+        margin-left: 3px;
+    }
+
+    .search {
+        position: absolute;
+        top: 6px;
+        right: 14px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search i {
+        font-size: 20px;
+    }
+
+    .search a {
+        font-weight: normal;
+        height: 30px;
+        line-height: 30px;
+        color: #000;
+        font-size: 15px;
+    }
+
+    #homeContainer {
+        position: absolute;
+        top: 55px;
+        width: 100%;
+        height: 94.5%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background: #efefef;
+    }
+
+    .rollImg {
+        list-style: none;
+        width: 400%;
+        height: 30%;
+        animation: rollPic 10s infinite;
+    }
+
+    @keyframes rollPic {
+        0%, 22% {
+            transform: translateX(0);
+        }
+        33%, 55% {
+            transform: translateX(-25%);
+        }
+        66%, 88% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(-75%);
+        }
+    }
+
+    .rollImg li {
+        float: left;
+        width: 25%;
+        height: 100%;
+    }
+
+    .rollImg li img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .nav {
+        list-style: none;
+        width: 100%;
+        height: 20%;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav li {
+        float: left;
+        width: 22.5%;
+        height: 55%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav li img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .recommend1 {
+        margin-top: 10px;
+        height: 20%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .recommend1 a{
+        width: 33%;
+        height: 100%;
+    }
+    .recommend1 a img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .recommend2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .market {
+        width: 100%;
+    }
+
+    .new, .hot {
+        width: 49%;
+    }
+
+    .new {
+        margin-left: 0.5%;
+    }
+
+    .recNav {
+        list-style: none;
+        width: 100%;
+        height: 20%;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+
+    .recNav li {
+        float: left;
+        width: 22.5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .banner{
+        display: inline-block;
+        width: 49.7%;
+        margin-top: 1px;
+        margin-right: 1px;
+    }
+    .banner img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .banner:nth-of-type(even) {
+    }
+
+    .partPro {
+        margin-bottom: 10px;
+        width: 100%;
+        height: 70%;
+        background-color: #fff;
+    }
+
+    .partPro > p {
+        height: 10%;
+        width: 94%;
+        margin-left: 3%;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 700;
+        position: relative;
+    }
+
+    .partPro p .block {
+        width: 3%;
+        height: 50%;
+        margin-right: 1%;
+    }
+
+    .partPro p .right {
+        position: absolute;
+        top: 40%;
+        right: 0;
+        color: #999;
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .partPro img {
+        width: 94%;
+        margin-left: 3%;
+    }
+
+    .partPro ul {
+        list-style: none;
+        height: 60%;
+        margin-top: 15px;
+    }
+
+    .partPro ul li {
+        float: left;
+        width: 33.333%;
+        height: 100%;
+        border-right: 2px solid #efefef;
+        position: relative;
+    }
+
+    .proMsg {
+        padding: 0 10px;
+    }
+
+    .pro_name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #232b33;
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .good_select {
+        border: 1px solid red;
+        display: inline-block;
+        color: red;
+        font-size: 12px;
+        line-height: 10px;
+        padding: 2px;
+        border-radius: 5px;
+    }
+
+    .gift {
+        background-color: red;
+        color: #fff;
+        border-radius: 0.5em;
+        margin-top: 10px;
+        padding: 1px 2px;
+    }
+
+    .net_w {
+        color: #999;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .price {
+        color: #ff3800
+    }
+
+    .old_price {
+        color: #999;
+        text-decoration: line-through;
+    }
+    .plus {
+        width: 30px;
+        height: 30px;
+        color: #ff4300;
+        font-size: 35px;
+        font-weight: bolder;
+        position: absolute;
+        bottom: 1%;
+        right: 5%;
+        text-align: center;
+        border: 1px solid #ff4300;
+        border-radius: 2em;
+        line-height: 30px;
+    }
+</style>
+<!-- header -->
+<header>
+    <a href="#/map"><h3>驼房营路附近<i class="glyphicon glyphicon-triangle-bottom"></i></h3></a>
+    <span class="search"><i class="glyphicon glyphicon-search"></i><a href="#/search">搜 索</a></span>
+</header>
+<div id="homeContainer">
+    <!-- 轮播图 -->
+    <ul class="rollImg">
+        <li ng-repeat="(index,item) in rollPic">
+            <a href="#/homeProDetail/{{item.id}}"><img src="{{item.img}}"></a>
+        </li>
+        <li><img src="http://img01.bqstatic.com//upload/activity/2017092811032378.jpg@90Q.jpg" alt=""></li>
+    </ul>
+    <!-- nav -->
+    <ul class="nav">
+        <li ng-repeat="(index,item) in nav">
+            <a href="#/homeProDetail/{{item.id}}"><img src="{{item.img}}" alt=""></a>
+            <h4>{{item.name}}</h4>
+        </li>
+    </ul>
+    <!-- 推荐_1 -->
+    <div class="recommend1">
+        <a href="#/homeProDetail/{{item.id}}" ng-repeat="(index,item) in recommend1">
+            <img src="{{item.img}}" alt="">
+        </a>
+    </div>
+    <!-- 推荐_2 -->
+    <div class="recommend2">
+        <img src="{{item.img}}" class="market" ng-repeat="(index,item) in market" ng-show="item.img">
+        <a href="#/categories">
+            <img src="{{item.img}}" class="new" ng-repeat="(index,item) in new" ng-show="item.img">
+            <img src="{{item.img}}" class="hot" ng-repeat="(index,item) in hot" ng-show="item.img">
+        </a>
+        <!-- nav -->
+        <ul class="recNav">
+            <li ng-repeat="(index,item) in recNav">
+                <a href="#/categories"><img src="{{item.img}}" alt=""></a>
+                <h4>{{item.name}}</h4>
+            </li>
+        </ul>
+        <!-- Ad -->
+        <a href="#/homeProDetail/{{item.activity.id}}" ng-repeat="(index,item) in recAd" class="banner">
+            <img src="{{item.activity.img}}">
+        </a>
+
+    </div>
+    <!-- 部分商品 -->
+    <div class="partPro" ng-repeat="(index1,item) in partPro">
+        <p ng-style="{'color': '#{{item.category_detail.category_color}}'}">
+            <span class="block" ng-style="{'background-color': '#{{item.category_detail.category_color}}'}"></span>
+            {{item.category_detail.name}}
+            <a href="#/categories" class="right">更多 &gt;</a>
+        </p>
+        <img src="{{item.activity.img}}" alt="">
+        <!-- 商品 -->
+        <ul>
+            <li ng-repeat="(index2,item) in partPro[index1].category_detail.goods">
+                <a href="#/homeProDetail/{{item.id}}"><img src="{{item.img}}" alt=""></a>
+                <div class="proMsg">
+                    <h3 class="pro_name">{{item.name}}</h3>
+                    <span class="good_select">精选</span><br>
+                    <span class="gift" ng-show="item.pm_desc">{{item.pm_desc}}</span>
+                    <p class="net_w">{{item.specifics}}</p>
+                    <span class="price">¥{{item.price}}</span>
+                    <span class="old_price" ng-show="item.price<item.market_price">¥{{item.market_price}}</span>
+                    <span class="plus" ng-click="shop(item)"> + </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

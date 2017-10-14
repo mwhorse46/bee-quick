@@ -1,0 +1,354 @@
+<style>
+    header {
+        width: 100%;
+        height: 55px;
+        padding: 0 10px;
+        position: fixed;
+        text-align: center;
+        line-height: 55px;
+        background-color: #ffd600;
+    }
+
+    h3 {
+        font-size: 18px;
+        font-weight: bolder;
+        color: #000;
+    }
+
+    h3 i {
+        font-size: 18px;
+        margin-left: 3px;
+    }
+
+    .search {
+        position: absolute;
+        top: 6px;
+        right: 14px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search i {
+        font-size: 20px;
+    }
+
+    .search a {
+        font-weight: normal;
+        height: 30px;
+        line-height: 30px;
+        color: #000;
+        font-size: 15px;
+    }
+
+    #cgrContainer {
+        width: 100%;
+        height: 94.5%;
+        position: absolute;
+        top: 55px;
+    }
+
+    #cgr {
+        width: 25%;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: absolute;
+        left: 0;
+    }
+
+    .cgrList {
+        width: 100%;
+        list-style: none;
+        background-color: #f8f8f8;
+        margin-bottom: 0;
+    }
+
+    .cgrList li {
+        padding: 20px 0;
+        text-align: center;
+        border-bottom: 1px solid #e0e0e0;
+        font-size: 14px;
+        color: #6d6d6d;
+        position: relative;
+    }
+
+    .cgrList li img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 60%;
+
+    }
+
+    .ylw {
+        width: 10px;
+        height: 80%;
+        position: absolute;
+        left: 0;
+        top: 10%;
+        background: #ffd600;
+    }
+
+    .ylwNone {
+        display: none;
+    }
+
+    .select {
+        width: 73%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 2%;
+        border-bottom: solid 1px #e0e0e0;
+        position: absolute;
+        right: 0;
+    }
+
+    .select a {
+        width: 50%;
+        height: 50%;
+        font-size: 14px;
+        display: flex;
+        color: #6d6d6d;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .select a:first-of-type {
+        border-right: solid 1px #e0e0e0;
+    }
+
+    .select a i {
+        font-size: 14px;
+        margin-left: 3%;
+        margin-top: -1%;
+    }
+
+    .iRotate {
+        animation: iRotate 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes iRotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-180deg);
+        }
+    }
+
+    .iRotateBack {
+        animation: iRotateBack 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes iRotateBack {
+        0% {
+            transform: rotate(-180deg);
+        }
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    #allCate, #integratedSort {
+        width: 75%;
+        height: 90%;
+        background: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        right: 0;
+        top: 10%;
+        z-index: 1;
+    }
+
+    #allCate p, #integratedSort p {
+        background: #fff;
+        padding: 2% 10%;
+    }
+
+    #allCate p a, #integratedSort p a {
+        display: inline-block;
+        border: solid 1px rgb(255, 214, 0);
+        border-radius: 0.5em;
+        padding: 5px 8px;
+        text-align: center;
+        margin: 10px;
+        color: rgb(117, 117, 117);
+    }
+
+    .active {
+        background: rgb(255, 249, 217);
+    }
+
+    #productList {
+        width: 73%;
+        height: 90%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-left: 2%;
+        position: absolute;
+        right: 0;
+        top: 10%;
+    }
+
+    #productList ul {
+        margin: 0;
+    }
+
+    .productList {
+        width: 100%;
+        height: 20%;
+        list-style: none;
+        border-bottom: solid 1px #e0e0e0;
+        padding-bottom: 2%;
+        position: relative;
+    }
+
+    .productList::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .productList img {
+        float: left;
+        width: 40%;
+        height: 100%;
+        margin-left: 1%;
+    }
+
+    .pro_msg {
+        float: left;
+        margin-left: 3%;
+        width: 50%;
+    }
+
+    .pro_name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #232b33;
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .good_select {
+        border: 1px solid red;
+        display: inline-block;
+        color: red;
+        font-size: 12px;
+        line-height: 10px;
+        padding: 2px;
+        border-radius: 5px;
+    }
+
+    .gift {
+        background-color: red;
+        color: #fff;
+        border-radius: 0.5em;
+        padding: 1px 2px;
+    }
+
+    .net_w {
+        margin-top: 10px;
+        color: #999;
+    }
+
+    .price {
+        color: #ff3800
+    }
+
+    .old_price {
+        color: #999;
+        text-decoration: line-through;
+    }
+
+    .plus, .less, .count {
+        width: 30px;
+        height: 30px;
+        color: #ff4300;
+        font-size: 35px;
+        font-weight: bolder;
+        position: absolute;
+        bottom: 5%;
+        right: 5%;
+        text-align: center;
+        border: 1px solid #ff4300;
+        border-radius: 2em;
+        line-height: 30px;
+    }
+
+    .count {
+        position: absolute;
+        bottom: 5%;
+        right: 15%;
+        font-size: 16px;
+        border: none;
+        color: #333;
+    }
+
+    .less {
+        right: 25%;
+    }
+</style>
+<!-- header -->
+<header>
+    <a href="#/map"><h3>驼房营路附近<i class="glyphicon glyphicon-triangle-bottom"></i></h3></a>
+    <span class="search"><i class="glyphicon glyphicon-search"></i><a href="#/search">搜 索</a></span>
+</header>
+<div id="cgrContainer">
+    <!-- 侧边列表 -->
+    <div id="cgr">
+        <ul class="cgrList">
+            <li ng-repeat="(index,item) in cgrList" ng-click="showYlw(index,item.id)">
+                <span ng-class="{true:'ylw', false:'ylwNone'}[setIndex===index]"></span>
+                {{item.name}}
+                <img src="{{item.flag}}" ng-show="item.flag">
+            </li>
+        </ul>
+    </div>
+    <!-- 右边tab -->
+    <div class="select">
+        <a ng-click="sortL()">{{key}}<i class="glyphicon glyphicon-menu-down"
+                                     ng-class="{true:'iRotate', false:'iRotateBack'}[showLBol]"></i></a>
+        <a ng-click="sortR()">{{rank}}<i class="glyphicon glyphicon-menu-down"
+                                     ng-class="{true:'iRotate', false:'iRotateBack'}[showRBol]"></i></a>
+    </div>
+    <!-- 全部分类 -->
+    <div id="allCate" ng-show="showLBol">
+        <p>
+            <a href="" ng-repeat="(index,item) in cgrCids" ng-click="assort(item)" ng-class="{true:'active', false:''}[key===item.name]">{{item.name}}</a>
+        </p>
+    </div>
+    <!-- 综合排序 -->
+    <div id="integratedSort" ng-show="showRBol">
+        <p>
+            <a href="" ng-repeat="(index,item) in ranking" ng-click="sort(item)" ng-class="{true:'active', false:''}[rank===item.name]">{{item.name}}</a>
+        </p>
+    </div>
+    <!-- productList -->
+    <div id="productList">
+        <ul>
+            <li class="productList" ng-repeat="(index,item) in proList | filter: filterItem | orderBy:'price':orderBol">
+                <a href="#/cgrProDetail/{{item.id}}"><img src="{{item.img}}" alt=""></a>
+                <!-- 产品信息 -->
+                <div class="pro_msg">
+                    <h3 class="pro_name">{{item.name}}</h3>
+                    <span class="good_select">精选</span>
+                    <span class="gift" ng-show="item.pm_desc">{{item.pm_desc}}</span>
+                    <p class="net_w">{{item.specifics}}</p>
+                    <span class="price">¥{{item.price}}</span>
+                    <span class="old_price" ng-show="item.price<item.market_price">¥{{item.market_price}}</span>
+                </div>
+                <!-- 数量 +/- -->
+                <span class="less" ng-show="item.pre_state>0" ng-click="cancelS(item)"> - </span>
+                <span class="count" ng-show="item.pre_state>0"> {{item.pre_state}} </span>
+                <span class="plus" ng-click="shop(item)"> + </span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+

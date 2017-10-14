@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: '微软雅黑', Helvetica, Tahoma, Arial, '华文细黑', sans-serif;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+.tabBar {
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: rgba(246, 246, 246, .95);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.tabBar a {
+    font-size: 14px;
+    color: #777;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.tabBar a span {
+    background-size: 100% 100%;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 5px;
+}
+.tabBar a .proNum{
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home {
+    background: url("../img/index2.png") no-repeat;
+}
+
+.cgr {
+    background: url("../img/send1.png") no-repeat;
+}
+
+.cart {
+    background: url("../img/cart1.png") no-repeat;
+}
+
+.mine {
+    background: url("../img/mine1.png") no-repeat;
+}
+
+.home2 {
+    background: url("../img/index1.png") no-repeat;
+}
+
+.cgr2 {
+    background: url("../img/send2.png") no-repeat;
+}
+
+.cart2 {
+    background: url("../img/cart2.png") no-repeat;
+}
+
+.mine2 {
+    background: url("../img/mine2.png") no-repeat;
+}
+
+.center {
+    height: 91%;
+    position: relative;
+}
+.centerV{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}

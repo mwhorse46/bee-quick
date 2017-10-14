@@ -1,0 +1,268 @@
+<style>
+
+    header {
+        width: 100%;
+        height: 55px;
+        line-height: 55px;
+        background-color: rgb(249, 250, 253);
+        border-bottom: solid 1px #e0e0e0;
+        position: fixed;
+        top: 0;
+    }
+
+    header a {
+        position: absolute;
+        left: 10px;
+    }
+
+    i {
+        color: #999;
+    }
+
+    h3 {
+        display: inline-block;
+        font-size: 18px;
+        width: 100%;
+        font-weight: bolder;
+        color: #000;
+        text-align: center;
+    }
+
+    header .save {
+        position: absolute;
+        right: 10px;
+        top: 0;
+    }
+
+    .box {
+        width: 100%;
+        height: 102%;
+        overflow: auto;
+        background-color: #efefef;
+        margin-top: 55px;
+    }
+
+    .now {
+        height: 55px;
+        background-color: #fff;
+        width: 100%;
+        line-height: 55px;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .now img {
+        height: 45%;
+        margin-left: 10px;
+    }
+
+    #container {
+        width: 100%;
+        height: 40%;
+    }
+
+    .addressMsg {
+        height: 100px;
+        width: 100%;
+        background-color: #fff;
+        margin-top: 10px;
+        position: relative;
+        font-size: 16px;
+    }
+
+    .user, .address {
+        height: 30px;
+        width: 60%;
+        margin: 0;
+        line-height: 30px;
+        position: absolute;
+        left: 25px;
+        top: 15px;
+    }
+
+    .address {
+        top: 55px;
+        color: #999;
+    }
+
+    .edit {
+        width: 30%;
+        height: 80%;
+        margin: 0;
+        border-left: solid 1px #e0e0e0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 30px;
+        top: 10px;
+    }
+
+    .empty {
+        width: 100%;
+        height: 60px;
+        margin-top: 10px;
+    }
+
+    .bottom {
+        position: fixed;
+        bottom: 0;
+        height: 60px;
+        width: 100%;
+        background-color: #fff;
+    }
+
+    .bottom p {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 70%;
+        height: 80%;
+        background-color: #ffd600;
+        color: #000;
+        font-size: 16px;
+        border-radius: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    table tr {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+    }
+
+    table tr td:first-of-type {
+        padding-left: 20px;
+        width: 30%;
+    }
+
+    table tr td:last-of-type {
+        position: relative;
+        width: 70%;
+    }
+
+    table tr td:last-of-type input {
+        border: 0;
+        outline: none;
+        width: 100%;
+    }
+
+    table tr td select {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 5%;
+        width: 15%;
+        border: 0;
+        opacity: 0;
+    }
+
+    .select {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-left: 20px;
+        border: solid 1px #efefef;
+        border-radius: 2em;
+        position: relative;
+        top: 5px;
+        left: -8px;
+    }
+
+    .select img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+    }
+
+    table tr td p {
+        margin: 0;
+        width: 90%;
+        display: inline-block;
+    }
+
+    table tr td i {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 5%;
+    }
+</style>
+<header>
+    <a href="" ng-click="back()"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <h3>{{title}}</h3>
+    <span class="save" ng-show="!addressBol" ng-click="save(name,tel,value,house,number)">保存</span>
+</header>
+<!-- 选择地址 -->
+<div class="box" ng-show="addressBol">
+    <div class="now" ng-click="position()">
+        <img src="./img/point.png" alt="">
+        定位到当前位置
+    </div>
+    <div class="addressMsg" ng-repeat="(index,item) in userMsg">
+        <p class="user">{{item.name}} {{item.tel}}</p>
+        <p class="address">{{item.city}}{{item.house}} {{item.number}}</p>
+        <p class="edit"><img src="./img/edit.png" alt="" ng-click="edit(index)"></p>
+    </div>
+    <div class="empty"></div>
+    <div class="bottom" ng-click="add()"><p>+ 新增地址</p></div>
+</div>
+<!-- 添加地址 & 修改地址 -->
+<div class="box" ng-show="!addressBol">
+    <table>
+        <tr>
+            <td>联系人</td>
+            <td><input type="text" placeholder="收货人姓名" ng-model="name"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <span class="select" ng-click="man()">
+                    <img ng-show="manBol" src="./img/select.png" alt="">
+                </span>先生
+                <span class="select" ng-click="woman()">
+                    <img ng-show="womanBol" src="./img/select.png" alt="">
+                </span>女士
+            </td>
+        </tr>
+        <tr>
+            <td>手机号码</td>
+            <td><input type="text" placeholder="鲜蜂侠联系您的电话" ng-model="tel"></td>
+        </tr>
+        <tr>
+            <td>所在城市</td>
+            <td>
+                <p>{{value}}</p><i class="glyphicon glyphicon-chevron-right"></i>
+                <select name="city" id="" ng-model="value">
+                    <option value="请选择城市">请选择城市</option>
+                    <option value="北京市">北京市</option>
+                    <option value="上海市">上海市</option>
+                    <option value="广州市">广州市</option>
+                    <option value="深圳市">深圳市</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>所在地区</td>
+            <td><input type="text" placeholder="请选择您的住宅小区" ng-model="house" ng-click="showMap()"></td>
+        </tr>
+        <tr>
+            <td>详细地址</td>
+            <td><input type="text" placeholder="请输入楼号门牌号" ng-model="number"></td>
+        </tr>
+    </table>
+    <gaode-map ng-show="mapBol"></gaode-map>
+</div>
+

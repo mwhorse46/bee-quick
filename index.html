@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" href="./css/animate.css">
+    <script src="http://webapi.amap.com/maps?v=1.4.0&key=837a9bdb426d81b6862135983d1d715c"></script>
+</head>
+<body ng-app="MyApp">
+<div class="container">
+    <!-- container -->
+    <div class="center">
+        <div ng-view class="centerV"></div>
+    </div>
+    <!-- tab bar -->
+    <div class="tabBar" ng-show="tabBarBol">
+        <a href="#/home">
+            <span ng-class="{true:'home animated bounceIn',false:'home2'}[home()]"></span>
+            首页
+        </a>
+        <a href="#/categories">
+            <span ng-class="{true:'cgr', false:'cgr2 animated bounceIn'}[cgr()]"></span>
+            闪送超市
+        </a>
+        <a href="#/cart">
+            <span ng-class="{true:'cart', false:'cart2 animated bounceIn'}[cart()]"></span>
+            购物车
+            <span class="proNum" ng-show="productNum>0" ng-class="{true:'animated bounceIn', false:''}[numZoomActive]">{{productNum}}</span>
+        </a>
+        <a href="#/mine">
+            <span ng-class="{true:'mine', false:'mine2 animated bounceIn'}[mine()]"></span>
+            我的
+        </a>
+    </div>
+</div>
+<script src="./js/angular.min.js"></script>
+<script src="./js/angular-route.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
